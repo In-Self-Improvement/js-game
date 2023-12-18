@@ -9,11 +9,7 @@ class SceneMain extends Phaser.Scene {
     });
   }
   create() {
-    this.char = this.add.sprite(
-      game.config.width / 2,
-      game.config.height / 2,
-      "char"
-    );
+    this.char = this.add.sprite(0, game.config.height / 2, "char");
     var frameNames = this.anims.generateFrameNumbers("char");
     this.anims.create({
       key: "walk",
@@ -22,6 +18,14 @@ class SceneMain extends Phaser.Scene {
       repeat: -1,
     });
     this.char.play("walk");
+
+    this.tweens.add({
+      targets: this.char,
+      duration: 5000,
+      x: game.config.width,
+      y: 0,
+      alpha: 0,
+    });
   }
   update() {
     this.char.x += 5;
