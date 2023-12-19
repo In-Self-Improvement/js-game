@@ -19,12 +19,24 @@ class SceneMain extends Phaser.Scene {
     });
     this.char.play("walk");
 
+    this.doWalk();
+  }
+  onCompleteHandler(tween, targets, scope) {
+    var char = targets[0];
+    char.x = 0;
+    char.y = game.config.height / 2;
+    char.alpha = 1;
+    scope.doWalk();
+  }
+  doWalk() {
     this.tweens.add({
       targets: this.char,
-      duration: 5000,
+      duration: 3000,
       x: game.config.width,
       y: 0,
       alpha: 0,
+      onComplete: this.onCompleteHandler,
+      onCompleteParams: [this],
     });
   }
   update() {
