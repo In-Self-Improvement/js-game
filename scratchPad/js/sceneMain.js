@@ -21,12 +21,12 @@ class SceneMain extends Phaser.Scene {
 
     this.doWalk();
   }
-  onCompleteHandler(tween, targets, scope) {
+  onCompleteHandler(tween, targets, custom) {
     var char = targets[0];
     char.x = 0;
     char.y = game.config.height / 2;
     char.alpha = 1;
-    scope.doWalk();
+    this.doWalk();
   }
   doWalk() {
     this.tweens.add({
@@ -35,8 +35,7 @@ class SceneMain extends Phaser.Scene {
       x: game.config.width,
       y: 0,
       alpha: 0,
-      onComplete: this.onCompleteHandler,
-      onCompleteParams: [this],
+      onComplete: this.onCompleteHandler.bind(this),
     });
   }
   update() {
