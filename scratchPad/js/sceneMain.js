@@ -20,6 +20,12 @@ class SceneMain extends Phaser.Scene {
     this.char.play("walk");
 
     this.doWalk();
+    this.text1 = this.add.text(
+      game.config.width / 2,
+      game.config.height / 2,
+      "Hello World"
+    );
+    this.text1.setOrigin(0.5, 0.5);
   }
   onCompleteHandler(tween, targets, custom) {
     var char = targets[0];
