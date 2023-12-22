@@ -23,7 +23,8 @@ class SceneMain extends Phaser.Scene {
     this.text1 = this.add.text(
       game.config.width / 2,
       game.config.height / 2,
-      "Hello World"
+      "GAME OVER",
+      { fontFamily: "Anton", color: "#ff0000", fontSize: 48 }
     );
     this.text1.setOrigin(0.5, 0.5);
   }
