@@ -9,36 +9,41 @@ class SceneMain extends Phaser.Scene {
     });
     // image
     this.load.image("face", "images/face.png");
+    this.load.audio("cat", ["audio/meow.mp3", "audio/meow.ogg"]);
   }
   create() {
-    this.char = this.add.sprite(0, game.config.height / 2, "char");
-    var frameNames = this.anims.generateFrameNumbers("char");
-    this.anims.create({
-      key: "walk",
-      frames: frameNames,
-      frameRate: 8,
-      repeat: -1,
-    });
-    this.char.play("walk");
+    // this.char = this.add.sprite(0, game.config.height / 2, "char");
+    // var frameNames = this.anims.generateFrameNumbers("char");
+    // this.anims.create({
+    //   key: "walk",
+    //   frames: frameNames,
+    //   frameRate: 8,
+    //   repeat: -1,
+    // });
+    // this.char.play("walk");
 
-    this.doWalk();
-    this.text1 = this.add.text(
-      game.config.width / 2,
-      game.config.height / 2,
-      "GAME OVER",
-      { fontFamily: "Anton", color: "#ff0000", fontSize: 48 }
-    );
-    this.text1.setOrigin(0.5, 0.5);
+    // this.doWalk();
+    // this.text1 = this.add.text(
+    //   game.config.width / 2,
+    //   game.config.height / 2,
+    //   "GAME OVER",
+    //   { fontFamily: "Anton", color: "#ff0000", fontSize: 48 }
+    // );
+    // this.text1.setOrigin(0.5, 0.5);
 
-    //image
-    this.face = this.add.image(
-      game.config.width / 2,
-      game.config.height / 2,
-      "face"
-    );
-    this.face.setInteractive();
-    this.face.on("pointerdown", this.onDown, this);
-    this.face.on("pointerup", this.onUp, this);
+    // //image
+    // this.face = this.add.image(
+    //   game.config.width / 2,
+    //   game.config.height / 2,
+    //   "face"
+    // );
+    // this.face.setInteractive();
+    // this.face.on("pointerdown", this.onDown, this);
+    // this.face.on("pointerup", this.onUp, this);
+
+    //sounds
+    this.catSounds = this.sound.add("cat");
+    this.catSounds.play();
   }
   onUp() {
     this.face.alpha = 1;
